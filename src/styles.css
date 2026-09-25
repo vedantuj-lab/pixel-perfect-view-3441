@@ -155,5 +155,36 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
+}
+
+@utility panel {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background-color: color-mix(in oklab, var(--glass) 55%, transparent);
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  100% {
+    transform: translate3d(40px, -30px, 0) rotate(-4deg);
+  }
+}
+
+@utility drift-slow {
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+@utility drift-slower {
+  animation: drift 20s ease-in-out infinite alternate-reverse;
 }
