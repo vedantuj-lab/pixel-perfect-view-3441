@@ -14,7 +14,119 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          audience: string | null
+          brand_dna: Json
+          brand_preference: string | null
+          completed_stages: string[]
+          created_at: string
+          current_stage: string
+          id: string
+          idea: string
+          idea_stage: string | null
+          industry: string | null
+          market: string | null
+          product_type: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          audience?: string | null
+          brand_dna?: Json
+          brand_preference?: string | null
+          completed_stages?: string[]
+          created_at?: string
+          current_stage?: string
+          id?: string
+          idea: string
+          idea_stage?: string | null
+          industry?: string | null
+          market?: string | null
+          product_type?: string | null
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          audience?: string | null
+          brand_dna?: Json
+          brand_preference?: string | null
+          completed_stages?: string[]
+          created_at?: string
+          current_stage?: string
+          id?: string
+          idea?: string
+          idea_stage?: string | null
+          industry?: string | null
+          market?: string | null
+          product_type?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      stage_runs: {
+        Row: {
+          created_at: string
+          id: string
+          inputs: Json
+          output: Json
+          project_id: string
+          stage: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          inputs?: Json
+          output?: Json
+          project_id: string
+          stage: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          inputs?: Json
+          output?: Json
+          project_id?: string
+          stage?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stage_runs_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
